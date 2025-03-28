@@ -56,12 +56,12 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'know',
-        'USER': 'postgres',
-        'PASSWORD': '0835',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "know",
+        "USER": "postgres",
+        "PASSWORD": "0835",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 
@@ -97,6 +97,6 @@ STATICFILES_DIRS = (BASE_DIR / "static",)
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-MEDIA_URL = 'media/'
+MEDIA_URL = "media/"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
