@@ -1,6 +1,8 @@
 from django.db import models
 from django.db.models import ForeignKey
 
+from users.models import User
+
 
 class Breed(models.Model):
     name = models.CharField(
@@ -95,6 +97,14 @@ class Parent(models.Model):
         default=0,
         blank=True,
         null=True,
+    )
+    owner = models.ForeignKey(
+        User,
+        verbose_name="Владелец",
+        help_text="Укажите владельца собаки",
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
     )
 
     class Meta:
