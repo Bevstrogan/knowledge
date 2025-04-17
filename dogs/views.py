@@ -16,22 +16,26 @@ from django.views.generic import (
 
 from dogs.forms import DogForm, ParentForm, DogModeratorForm
 from dogs.models import Dog, Parent
+from dogs.services import get_dogs_from_cache
 
 
 class DogListView(ListView):
     model = Dog
 
+    def get_queryset(self):
+        return get_dogs_from_cache()
+
 
 class DogDetailView(DetailView, LoginRequiredMixin):
     model = Dog
 
-    def get_object(self, queryset=None):
-        self.object = super().get_object(queryset)
-        if self.request.user == self.object.owner:
-            self.object.views_field += 1
-            self.object.save()
-            return self.object
-        raise PermissionDenied
+    # def get_object(self, queryset=None):
+    #     self.object = super().get_object(queryset)
+    #     if self.request.user == self.object.owner:
+    #         self.object.views_field += 1
+    #         self.object.save()
+    #         return self.object
+    #     raise PermissionDenied
 
 
 class DogCreateView(CreateView, LoginRequiredMixin):
